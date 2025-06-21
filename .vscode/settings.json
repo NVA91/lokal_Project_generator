@@ -1,0 +1,12 @@
+{
+  "python.pythonPath": "venv/bin/python",
+  "files.watcherExclude": {
+    "**/venv/**": true,
+    "**/__pycache__/**": true
+  },
+  "search.exclude": {
+    "**/venv/**": true,
+    "**/__pycache__/**": true
+  },
+  "editor.renderLineHighlight": "gutter"
+}
