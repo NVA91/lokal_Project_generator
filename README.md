@@ -34,3 +34,10 @@ Tests können mit folgendem Skript ausgeführt werden:
 ./run_tests.sh
 ```
 
+## Templates
+
+Es stehen mehrere Projektvorlagen zur Verfügung, die im Verzeichnis
+`templates/` liegen. Mit dem `TemplateManager` lassen sich Projekte
+aus diesen Vorlagen erzeugen. Verfügbare Templates sind aktuell
+`smart_home`, `automation` und `game_dev`.
+
