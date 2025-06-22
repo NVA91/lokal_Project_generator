@@ -26,6 +26,7 @@ Führe das Skript `setup_project.sh` aus, um die Verzeichnisstruktur anzulegen u
 
 ```bash
 ./setup_project.sh
+pip install .[dev]
 ```
 
 Tests können mit folgendem Skript ausgeführt werden:
