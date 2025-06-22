@@ -1,4 +1,13 @@
+# Virtual environments
 venv/
-**pycache**/
+
+# Byte-compiled files
+__pycache__/
+*.py[cod]
+
+# Test cache
+.pytest_cache/
+
+# Logs and other artifacts
 *.log
 .DS_Store
