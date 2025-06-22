@@ -1,36 +1,47 @@
 # project_generator
 
-kleiner Helfer ;)
+A small helper to demonstrate a modern Python project structure.
 
-# Mein Projekt
+## Structure
 
-Dieses Projekt enthält die Hauptanwendung, Tests und Dokumentation.
+- `src/project_generator/`: package source code
+- `tests/`: unit tests
+- `docs/`: documentation
 
-## Struktur
+## Usage
 
-* src/: Quellcode
-* tests/: Unit-Tests
-* docs/: Dokumentation
-
-## Nutzung
-
-Das Hauptprogramm befindet sich in `src/main.py`. Starte es mit:
+Run without arguments to see a greeting:
 
 ```bash
-python -m src.main
+python -m project_generator
 ```
 
-## Entwicklungs-Setup
+Create a new project skeleton:
 
-Führe das Skript `setup_project.sh` aus, um die Verzeichnisstruktur anzulegen und ein virtuelles Environment zu erstellen:
+```bash
+python -m project_generator create my_project
+```
+
+This will create directories like `my_project/src` and `my_project/tests` and
+populate files such as `.gitignore`, `pyproject.toml` and a basic GitHub
+Actions workflow for linting and tests.
+
+## Development Setup
+
+Create the folder structure and a virtual environment:
 
 ```bash
 ./setup_project.sh
 ```
 
-Tests können mit folgendem Skript ausgeführt werden:
+Install dependencies (requires `pip`):
+
+```bash
+pip install -r requirements.txt
+```
+
+Run tests:
 
 ```bash
 ./run_tests.sh
 ```
-
