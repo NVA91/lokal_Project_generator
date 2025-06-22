@@ -14,10 +14,10 @@ Dieses Projekt enthält die Hauptanwendung, Tests und Dokumentation.
 
 ## Nutzung
 
-Das Hauptprogramm befindet sich in `src/main.py`. Starte es mit:
+Das Hauptprogramm befindet sich in `src/project_generator/main.py`. Starte es mit einem optionalen Zielpfad:
 
 ```bash
-python -m src.main
+python -m project_generator.main path/to/project
 ```
 
 ## Entwicklungs-Setup
@@ -33,4 +33,3 @@ Tests können mit folgendem Skript ausgeführt werden:
 ```bash
 ./run_tests.sh
 ```
-

@@ -1,3 +1,3 @@
 #!/bin/sh
 # Run the project's unit tests
-python -m pytest -q
+PYTHONPATH=src python -m pytest -q
