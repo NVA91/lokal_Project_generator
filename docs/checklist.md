@@ -1,9 +1,9 @@
 # Projekt-Checkliste
 
-- [ ] Alle wichtigen Dateien und Ordner vorhanden
-- [ ] CI/CD Workflows funktionsfähig
-- [ ] Lokale Entwicklungsumgebung mit VS Code konfiguriert
-- [ ] Dokumentation auf dem neuesten Stand
+- [x] Alle wichtigen Dateien und Ordner vorhanden
+- [x] CI/CD Workflows funktionsfähig
+- [x] Lokale Entwicklungsumgebung mit VS Code konfiguriert
+- [x] Dokumentation auf dem neuesten Stand
 
 ## Weitere Verbesserungen
 - Automatische Code-Formatierung mit Black oder Prettier einsetzen
