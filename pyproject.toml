@@ -1,0 +1,13 @@
+[build-system]
+requires = ["setuptools>=42", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "project_generator"
+version = "0.1.0"
+description = "A simple Python project generator"
+readme = "README.md"
+requires-python = ">=3.8"
+
+[tool.pip-tools]
+generate-hashes = true
