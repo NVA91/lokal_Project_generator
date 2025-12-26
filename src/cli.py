@@ -4,6 +4,7 @@ import sys
 from pathlib import Path
 import shutil
 import click
+from click.utils import LazyFile
 from src.template_service import TemplateService
 
 
@@ -77,7 +78,8 @@ def generate(template: str, output: str, templates_dir: str):
         ) as bar:
             # Copy template
             shutil.copytree(template_path, output_path)
-            bar.update(100)
+            if bar is not None:
+                bar.update(100)
 
         click.echo(
             click.style(
@@ -191,7 +193,8 @@ def import_template(source: str, templates_dir: str):
             show_pos=True,
         ) as bar:
             result = service.import_template(source_path)
-            bar.update(100)
+            if bar is not None:
+                bar.update(100)
 
         click.echo(
             click.style(
