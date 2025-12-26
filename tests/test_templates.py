@@ -1,4 +1,8 @@
-from src.template_base import SmartHomeTemplate, AutomationTemplate, GameDevTemplate
+from src.template_base import (
+    SmartHomeTemplate,
+    AutomationTemplate,
+    GameDevTemplate,
+)
 
 
 def test_smart_home_template():
