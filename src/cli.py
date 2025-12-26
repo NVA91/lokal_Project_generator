@@ -1,6 +1,7 @@
 """Professional CLI interface using click."""
 
 import click
+import sys
 from pathlib import Path
 import shutil
 from typing import Optional
@@ -57,7 +58,7 @@ def generate(template: str, output: str, templates_dir: str):
                 ),
                 err=True
             )
-            raise click.Exit(1)
+            sys.exit(1)
         
         if output_path.exists():
             click.echo(
@@ -67,7 +68,7 @@ def generate(template: str, output: str, templates_dir: str):
                 ),
                 err=True
             )
-            raise click.Exit(1)
+            sys.exit(1)
         
         # Create project
         with click.progressbar(
@@ -92,7 +93,7 @@ def generate(template: str, output: str, templates_dir: str):
             click.style(f"❌ Error: {str(e)}", fg='red'),
             err=True
         )
-        raise click.Exit(1)
+        sys.exit(1)
 
 
 @cli.command()
@@ -144,7 +145,7 @@ def list(templates_dir: str):
             click.style(f"❌ Error: {str(e)}", fg='red'),
             err=True
         )
-        raise click.Exit(1)
+        sys.exit(1)
 
 
 @cli.command()
@@ -179,7 +180,7 @@ def import_template(source: str, templates_dir: str):
                 ),
                 err=True
             )
-            raise click.Exit(1)
+            sys.exit(1)
         
         with click.progressbar(
             length=100,
@@ -202,13 +203,13 @@ def import_template(source: str, templates_dir: str):
             click.style(f"❌ {str(e)}", fg='red'),
             err=True
         )
-        raise click.Exit(1)
+        sys.exit(1)
     except Exception as e:
         click.echo(
             click.style(f"❌ Error: {str(e)}", fg='red'),
             err=True
         )
-        raise click.Exit(1)
+        sys.exit(1)
 
 
 @cli.command()
@@ -242,7 +243,7 @@ def preview(template: str, templates_dir: str):
                 ),
                 err=True
             )
-            raise click.Exit(1)
+            sys.exit(1)
         
         structure = service.get_template_structure(template)
         
@@ -272,7 +273,7 @@ def preview(template: str, templates_dir: str):
             click.style(f"❌ Error: {str(e)}", fg='red'),
             err=True
         )
-        raise click.Exit(1)
+        sys.exit(1)
 
 
 if __name__ == '__main__':
