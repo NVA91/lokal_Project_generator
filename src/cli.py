@@ -4,7 +4,6 @@ import sys
 from pathlib import Path
 import shutil
 import click
-from click.utils import LazyFile
 from src.template_service import TemplateService
 
 
