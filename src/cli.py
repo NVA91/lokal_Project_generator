@@ -3,6 +3,7 @@
 import sys
 from pathlib import Path
 import shutil
+from typing import Any
 import click
 from src.template_service import TemplateService
 
@@ -75,10 +76,10 @@ def generate(template: str, output: str, templates_dir: str):
             label=f"📦 Generating project from '{template}'",
             show_pos=True,
         ) as bar:
+            bar: Any  # type: ignore
             # Copy template
             shutil.copytree(template_path, output_path)
-            if bar is not None:
-                bar.update(100)
+            bar.update(100)
 
         click.echo(
             click.style(
@@ -191,9 +192,9 @@ def import_template(source: str, templates_dir: str):
             label=f"📥 Importing template '{source_path.name}'",
             show_pos=True,
         ) as bar:
+            bar: Any  # type: ignore
             result = service.import_template(source_path)
-            if bar is not None:
-                bar.update(100)
+            bar.update(100)
 
         click.echo(
             click.style(
