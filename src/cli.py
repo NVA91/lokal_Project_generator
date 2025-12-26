@@ -3,7 +3,7 @@
 import sys
 from pathlib import Path
 import shutil
-from typing import Any
+from typing import Any, Optional
 import click
 from src.template_service import TemplateService
 
@@ -71,15 +71,16 @@ def generate(template: str, output: str, templates_dir: str):
             sys.exit(1)
 
         # Create project
+        bar: Optional[Any] = None
         with click.progressbar(
             length=100,
             label=f"📦 Generating project from '{template}'",
             show_pos=True,
         ) as bar:
-            bar: Any  # type: ignore
             # Copy template
             shutil.copytree(template_path, output_path)
-            bar.update(100)
+            if bar is not None:
+                bar.update(100)
 
         click.echo(
             click.style(
@@ -187,14 +188,15 @@ def import_template(source: str, templates_dir: str):
             )
             sys.exit(1)
 
+        bar: Optional[Any] = None
         with click.progressbar(
             length=100,
             label=f"📥 Importing template '{source_path.name}'",
             show_pos=True,
         ) as bar:
-            bar: Any  # type: ignore
             result = service.import_template(source_path)
-            bar.update(100)
+            if bar is not None:
+                bar.update(100)
 
         click.echo(
             click.style(
