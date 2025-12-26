@@ -1,10 +1,7 @@
 """Main entry point for the project_generator package."""
 
-
-def main():
-    """Simple CLI entry that prints a welcome message."""
-    print("Hello from project_generator!")
+from src.cli import cli
 
 
 if __name__ == "__main__":
-    main()
+    cli()
