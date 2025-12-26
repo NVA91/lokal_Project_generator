@@ -1,6 +1,7 @@
 from pathlib import Path
 from typing import Union
 
+
 class TemplateService:
     """Service for managing template folders."""
 
@@ -11,7 +12,9 @@ class TemplateService:
 
     def list_templates(self):
         """Return a sorted list of available template names."""
-        return sorted(p.name for p in self.templates_dir.iterdir() if p.is_dir())
+        return sorted(
+            p.name for p in self.templates_dir.iterdir() if p.is_dir()
+        )
 
     def get_template_structure(self, template_name: str):
         """Return a nested dict representing the folder structure."""
@@ -41,5 +44,7 @@ class TemplateService:
             import shutil
             shutil.copytree(src, dest)
         else:
-            raise ValueError("Only directories can be imported as templates")
+            raise ValueError(
+                "Only directories can be imported as templates"
+            )
         return dest
