@@ -1,5 +1,5 @@
 from pathlib import Path
-from typing import Union
+from typing import Union, Dict, Any
 
 
 class TemplateService:
@@ -16,12 +16,12 @@ class TemplateService:
             p.name for p in self.templates_dir.iterdir() if p.is_dir()
         )
 
-    def get_template_structure(self, template_name: str):
+    def get_template_structure(self, template_name: str) -> Dict[str, Any]:
         """Return a nested dict representing the folder structure."""
         root = self.templates_dir / template_name
         if not root.exists():
             return {}
-        structure = {}
+        structure: Dict[str, Any] = {}
         for path in sorted(root.rglob("*")):
             relative = path.relative_to(root)
             parts = relative.parts
