@@ -252,4 +252,3 @@ class ProjectGeneratorApp(TkinterDnD):
         for pct in self.venv_manager.create_environment(Path('env'), python_version, deps):
             self.after(0, self.setup_progress.configure, value=pct)
         self.after(0, messagebox.showinfo, 'Done', 'Virtual environment created')
-
