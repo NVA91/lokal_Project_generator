@@ -60,7 +60,9 @@ class AutomationTemplate(TemplateBase):
 
     def get_structure(self) -> Dict[str, Any]:
         return {
-            ".github": {"workflows": {"ci.yml": None, "cd.yml": None}},
+            ".github": {
+                "workflows": {"ci.yml": None, "cd.yml": None}
+            },
             "scripts": {"deploy.sh": None},
             "docs": {"automation": {"README.md": None}},
             "README.md": None,
@@ -69,7 +71,10 @@ class AutomationTemplate(TemplateBase):
     def get_metadata(self) -> Dict[str, Any]:
         return {
             "dependencies": ["docker", "github-actions"],
-            "config_files": [".github/workflows/ci.yml", ".github/workflows/cd.yml"],
+            "config_files": [
+                ".github/workflows/ci.yml",
+                ".github/workflows/cd.yml",
+            ],
         }
 
 
