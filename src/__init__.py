@@ -10,6 +10,10 @@ from .template_base import (
     AutomationTemplate,
     GameDevTemplate,
 )
+from .taupunkt_template import (
+    TaupunktTemplate,
+    TaupunktAdvancedTemplate,
+)
 
 __all__ = [
     'TemplateService',
@@ -22,4 +26,6 @@ __all__ = [
     'SmartHomeTemplate',
     'AutomationTemplate',
     'GameDevTemplate',
+    'TaupunktTemplate',
+    'TaupunktAdvancedTemplate',
 ]
