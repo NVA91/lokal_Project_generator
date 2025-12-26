@@ -29,9 +29,11 @@ class ESP32SensorTemplate(TemplateBase):
 
     def get_description(self) -> str:
         """Return a short description of the template."""
+        protocol_upper = self.protocol.upper()
         return (
-            f"ESP32 IoT sensor project with {self.protocol.upper()} integration. "
-            f"Includes sensor calibration, data logging, and cloud sync."
+            f"ESP32 IoT sensor project with {protocol_upper} "
+            f"integration. Includes sensor calibration, data logging, "
+            f"and cloud sync."
         )
 
     def get_structure(self) -> Dict[str, Any]:
@@ -143,8 +145,8 @@ class SHT41TemperatureHumidityTemplate(ESP32SensorTemplate):
         """Return a short description of the template."""
         return (
             "Professional environment monitoring with SHT41 sensor. "
-            "Includes temperature, humidity, and dew point calculation. "
-            "MQTT integration ready."
+            "Includes temperature, humidity, and dew point "
+            "calculation. MQTT integration ready."
         )
 
     def get_structure(self) -> Dict[str, Any]:
@@ -163,8 +165,8 @@ class SHT41TemperatureHumidityTemplate(ESP32SensorTemplate):
             "interface": "I2C",
             "measurement_range": "-40 to +125 C",
             "humidity_range": "0 to 100 RH",
-            "accuracy_temp": "+/-1.5 C",
-            "accuracy_humidity": "+/-3 RH",
+            "accuracy_temp": "+/-1.5 C (accuracy)",
+            "accuracy_humidity": "+/-3 RH (accuracy)",
         }
         metadata["config_files"].append("config/sht41_calibration.json")
         return metadata
@@ -236,7 +238,8 @@ class MotionSensorTemplate(ESP32SensorTemplate):
         """Return a short description of the template."""
         return (
             "Motion detection and occupancy monitoring. "
-            "PIR and accelerometer integration for reliable detection."
+            "PIR and accelerometer integration for reliable "
+            "detection."
         )
 
     def get_metadata(self) -> Dict[str, Any]:
