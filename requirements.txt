@@ -1,1 +1,6 @@
-pytest
+pytest==8.0.0
+black==24.1.1
+flake8==7.0.0
+mypy==1.8.0
+tkinter-tkdnd==0.3.2
+click==8.1.7
