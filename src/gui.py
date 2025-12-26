@@ -9,15 +9,15 @@ from .template_service import TemplateService
 from .template_preview import TemplatePreview
 
 try:
-    from tkinterdnd2 import DND_FILES, TkinterDnD
+    from tkinterdnd2 import DND_FILES, TkinterDnD  # type: ignore
     _DND_AVAILABLE = True
 except ImportError:  # pragma: no cover - optional dependency
-    TkinterDnD = tk.Tk
+    TkinterDnD = tk.Tk  # type: ignore
     DND_FILES = 'DND_Files'
     _DND_AVAILABLE = False
 
 
-class ProjectGeneratorGUI(TkinterDnD):
+class ProjectGeneratorGUI(TkinterDnD):  # type: ignore
     """Main GUI window for project generation."""
 
     def __init__(self, templates_dir: str):
@@ -27,7 +27,7 @@ class ProjectGeneratorGUI(TkinterDnD):
         # use a modern theme if available
         self.style.theme_use('clam')
 
-        self.template_service = TemplateService(templates_dir)
+        self.template_service = TemplateService(Path(templates_dir))
 
         # top row: template selector and import button
         selector_frame = ttk.Frame(self)
@@ -61,8 +61,8 @@ class ProjectGeneratorGUI(TkinterDnD):
             self.preview.load_template(first)
 
         if _DND_AVAILABLE:
-            self.preview.drop_target_register(DND_FILES)
-            self.preview.dnd_bind('<<Drop>>', self._on_drop)
+            self.preview.drop_target_register(DND_FILES)  # type: ignore
+            self.preview.dnd_bind('<<Drop>>', self._on_drop)  # type: ignore
 
     def _refresh_templates(self):
         names = self.template_service.list_templates()
@@ -141,7 +141,7 @@ if __name__ == '__main__':  # pragma: no cover
     main()
 
 
-class ProjectGeneratorApp(TkinterDnD):
+class ProjectGeneratorApp(TkinterDnD):  # type: ignore
     """Extended GUI with dependency management."""
 
     def __init__(self, templates_dir: str):
@@ -169,7 +169,7 @@ class ProjectGeneratorApp(TkinterDnD):
         tab = ttk.Frame(self.notebook)
         self.notebook.add(tab, text='Project')
 
-        self.template_service = TemplateService(templates_dir)
+        self.template_service = TemplateService(Path(templates_dir))
 
         selector_frame = ttk.Frame(tab)
         selector_frame.grid(row=0, column=0, sticky='ew', padx=5, pady=(5, 0))
@@ -203,8 +203,8 @@ class ProjectGeneratorApp(TkinterDnD):
             self.preview.load_template(first)
 
         if _DND_AVAILABLE:
-            self.preview.drop_target_register(DND_FILES)
-            self.preview.dnd_bind('<<Drop>>', self._on_drop)
+            self.preview.drop_target_register(DND_FILES)  # type: ignore
+            self.preview.dnd_bind('<<Drop>>', self._on_drop)  # type: ignore
 
     # --- dependency tab ----------------------------------------------
     def _setup_dependency_tab(self):
