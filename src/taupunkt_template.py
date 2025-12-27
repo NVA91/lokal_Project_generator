@@ -23,7 +23,7 @@ class TaupunktTemplate(TemplateBase):
     def __init__(self):
         """Initialize Taupunkt template."""
         self.controller = "Raspberry Pi Pico 2"
-        self.display = "Waveshare 1.47\" LCD ST7789"
+        self.display = 'Waveshare 1.47" LCD ST7789'
         self.framework = "MicroPython"
 
     def get_name(self) -> str:
@@ -129,7 +129,7 @@ class TaupunktTemplate(TemplateBase):
             },
             "display": {
                 "manufacturer": "Waveshare",
-                "model": "1.47\" LCD",
+                "model": '1.47" LCD',
                 "controller": "ST7789",
                 "resolution": "172x320",
                 "interface": "SPI",
@@ -243,19 +243,23 @@ class TaupunktAdvancedTemplate(TaupunktTemplate):
     def get_metadata(self) -> Dict[str, Any]:
         """Return advanced metadata."""
         metadata = super().get_metadata()
-        metadata["dependencies"].extend([
-            "micropython-mqtt",
-            "micropython-requests",
-            "micropython-json",
-        ])
-        metadata["features"].extend([
-            "MQTT connectivity",
-            "Web dashboard",
-            "Cloud data sync",
-            "RESTful API",
-            "Historical analytics",
-            "Real-time notifications",
-        ])
+        metadata["dependencies"].extend(
+            [
+                "micropython-mqtt",
+                "micropython-requests",
+                "micropython-json",
+            ]
+        )
+        metadata["features"].extend(
+            [
+                "MQTT connectivity",
+                "Web dashboard",
+                "Cloud data sync",
+                "RESTful API",
+                "Historical analytics",
+                "Real-time notifications",
+            ]
+        )
         metadata["advanced_features"] = {
             "connectivity": ["WiFi", "MQTT", "REST API"],
             "storage": ["Local database", "Cloud sync"],

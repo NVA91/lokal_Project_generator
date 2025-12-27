@@ -3,12 +3,8 @@ from pathlib import Path
 
 
 def run_setup_script(tmp_path):
-    script = (
-        Path(__file__).resolve().parents[1] / "setup_project.sh"
-    )
-    result = subprocess.run(
-        ["sh", script], cwd=tmp_path, capture_output=True, text=True
-    )
+    script = Path(__file__).resolve().parents[1] / "setup_project.sh"
+    result = subprocess.run(["sh", script], cwd=tmp_path, capture_output=True, text=True)
     return result
 
 

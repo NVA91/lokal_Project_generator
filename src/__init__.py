@@ -16,16 +16,16 @@ from .taupunkt_template import (
 )
 
 __all__ = [
-    'TemplateService',
-    'TemplatePreview',
-    'ProjectGeneratorGUI',
-    'ProjectGeneratorApp',
-    'VirtualEnvironmentManager',
-    'DependencyManager',
-    'TemplateBase',
-    'SmartHomeTemplate',
-    'AutomationTemplate',
-    'GameDevTemplate',
-    'TaupunktTemplate',
-    'TaupunktAdvancedTemplate',
+    "TemplateService",
+    "TemplatePreview",
+    "ProjectGeneratorGUI",
+    "ProjectGeneratorApp",
+    "VirtualEnvironmentManager",
+    "DependencyManager",
+    "TemplateBase",
+    "SmartHomeTemplate",
+    "AutomationTemplate",
+    "GameDevTemplate",
+    "TaupunktTemplate",
+    "TaupunktAdvancedTemplate",
 ]

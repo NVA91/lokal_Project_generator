@@ -60,9 +60,7 @@ class AutomationTemplate(TemplateBase):
 
     def get_structure(self) -> Dict[str, Any]:
         return {
-            ".github": {
-                "workflows": {"ci.yml": None, "cd.yml": None}
-            },
+            ".github": {"workflows": {"ci.yml": None, "cd.yml": None}},
             "scripts": {"deploy.sh": None},
             "docs": {"automation": {"README.md": None}},
             "README.md": None,

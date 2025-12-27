@@ -9,7 +9,7 @@ from src.template_service import TemplateService
 
 
 @click.group()
-@click.version_option(version='1.0.0')
+@click.version_option(version="1.0.0")
 def cli():
     """🚀 lokal_Project_Generator - Professional Project Template System.
 
@@ -21,23 +21,23 @@ def cli():
 
 @cli.command()
 @click.option(
-    '--template',
-    '-t',
+    "--template",
+    "-t",
     required=True,
-    help='Template name to use for generation',
+    help="Template name to use for generation",
 )
 @click.option(
-    '--output',
-    '-o',
+    "--output",
+    "-o",
     type=click.Path(),
     required=True,
-    help='Output directory for the new project',
+    help="Output directory for the new project",
 )
 @click.option(
-    '--templates-dir',
+    "--templates-dir",
     type=click.Path(),
-    default='templates',
-    help='Path to templates directory (default: ./templates)',
+    default="templates",
+    help="Path to templates directory (default: ./templates)",
 )
 def generate(template: str, output: str, templates_dir: str):
     """Generate a new project from a template.
@@ -54,7 +54,7 @@ def generate(template: str, output: str, templates_dir: str):
             click.echo(
                 click.style(
                     f"❌ Template '{template}' not found in {templates_dir}",
-                    fg='red',
+                    fg="red",
                 ),
                 err=True,
             )
@@ -64,7 +64,7 @@ def generate(template: str, output: str, templates_dir: str):
             click.echo(
                 click.style(
                     f"❌ Output directory '{output}' already exists",
-                    fg='red',
+                    fg="red",
                 ),
                 err=True,
             )
@@ -84,16 +84,15 @@ def generate(template: str, output: str, templates_dir: str):
 
         click.echo(
             click.style(
-                f"✅ Project successfully created at: "
-                f"{output_path.absolute()}",
-                fg='green',
+                f"✅ Project successfully created at: " f"{output_path.absolute()}",
+                fg="green",
                 bold=True,
             )
         )
 
     except Exception as e:
         click.echo(
-            click.style(f"❌ Error: {str(e)}", fg='red'),
+            click.style(f"❌ Error: {str(e)}", fg="red"),
             err=True,
         )
         sys.exit(1)
@@ -101,10 +100,10 @@ def generate(template: str, output: str, templates_dir: str):
 
 @cli.command()
 @click.option(
-    '--templates-dir',
+    "--templates-dir",
     type=click.Path(),
-    default='templates',
-    help='Path to templates directory (default: ./templates)',
+    default="templates",
+    help="Path to templates directory (default: ./templates)",
 )
 def list(templates_dir: str):
     """List all available templates.
@@ -119,9 +118,8 @@ def list(templates_dir: str):
         if not templates:
             click.echo(
                 click.style(
-                    "⚠️  No templates found. Use 'lokal import' to "
-                    "add templates.",
-                    fg='yellow',
+                    "⚠️  No templates found. Use 'lokal import' to " "add templates.",
+                    fg="yellow",
                 )
             )
             return
@@ -129,26 +127,21 @@ def list(templates_dir: str):
         click.echo(
             click.style(
                 "\n📚 Available Templates:\n",
-                fg='cyan',
+                fg="cyan",
                 bold=True,
             )
         )
 
         for i, template_name in enumerate(templates, 1):
             template_path = Path(templates_dir) / template_name
-            files_count = sum(
-                1 for _ in template_path.rglob('*') if _.is_file()
-            )
-            click.echo(
-                f"  {i}. {click.style(template_name, fg='green')} "
-                f"({files_count} files)"
-            )
+            files_count = sum(1 for _ in template_path.rglob("*") if _.is_file())
+            click.echo(f"  {i}. {click.style(template_name, fg='green')} " f"({files_count} files)")
 
         click.echo()
 
     except Exception as e:
         click.echo(
-            click.style(f"❌ Error: {str(e)}", fg='red'),
+            click.style(f"❌ Error: {str(e)}", fg="red"),
             err=True,
         )
         sys.exit(1)
@@ -156,17 +149,17 @@ def list(templates_dir: str):
 
 @cli.command()
 @click.option(
-    '--source',
-    '-s',
+    "--source",
+    "-s",
     required=True,
     type=click.Path(exists=True),
-    help='Path to template directory to import',
+    help="Path to template directory to import",
 )
 @click.option(
-    '--templates-dir',
+    "--templates-dir",
     type=click.Path(),
-    default='templates',
-    help='Path to templates directory (default: ./templates)',
+    default="templates",
+    help="Path to templates directory (default: ./templates)",
 )
 def import_template(source: str, templates_dir: str):
     """Import a new template from a local directory.
@@ -182,7 +175,7 @@ def import_template(source: str, templates_dir: str):
             click.echo(
                 click.style(
                     f"❌ Source '{source}' is not a directory",
-                    fg='red',
+                    fg="red",
                 ),
                 err=True,
             )
@@ -201,20 +194,20 @@ def import_template(source: str, templates_dir: str):
         click.echo(
             click.style(
                 f"✅ Template successfully imported: {result}",
-                fg='green',
+                fg="green",
                 bold=True,
             )
         )
 
     except FileExistsError as e:
         click.echo(
-            click.style(f"❌ {str(e)}", fg='red'),
+            click.style(f"❌ {str(e)}", fg="red"),
             err=True,
         )
         sys.exit(1)
     except Exception as e:
         click.echo(
-            click.style(f"❌ Error: {str(e)}", fg='red'),
+            click.style(f"❌ Error: {str(e)}", fg="red"),
             err=True,
         )
         sys.exit(1)
@@ -222,16 +215,16 @@ def import_template(source: str, templates_dir: str):
 
 @cli.command()
 @click.option(
-    '--templates-dir',
+    "--templates-dir",
     type=click.Path(),
-    default='templates',
-    help='Path to templates directory (default: ./templates)',
+    default="templates",
+    help="Path to templates directory (default: ./templates)",
 )
 @click.option(
-    '--template',
-    '-t',
+    "--template",
+    "-t",
     required=True,
-    help='Template name to preview',
+    help="Template name to preview",
 )
 def preview(template: str, templates_dir: str):
     """Preview template structure and contents.
@@ -247,7 +240,7 @@ def preview(template: str, templates_dir: str):
             click.echo(
                 click.style(
                     f"❌ Template '{template}' not found",
-                    fg='red',
+                    fg="red",
                 ),
                 err=True,
             )
@@ -258,7 +251,7 @@ def preview(template: str, templates_dir: str):
         click.echo(
             click.style(
                 f"\n📋 Template Structure: {template}\n",
-                fg='cyan',
+                fg="cyan",
                 bold=True,
             )
         )
@@ -268,9 +261,7 @@ def preview(template: str, templates_dir: str):
             for key, value in d.items():
                 prefix = "  " * indent + "├─ "
                 if isinstance(value, dict):
-                    click.echo(
-                        click.style(f"{prefix}📁 {key}/", fg='blue')
-                    )
+                    click.echo(click.style(f"{prefix}📁 {key}/", fg="blue"))
                     print_tree(value, indent + 1)
                 else:
                     click.echo(f"{prefix}📄 {key}")
@@ -280,11 +271,11 @@ def preview(template: str, templates_dir: str):
 
     except Exception as e:
         click.echo(
-            click.style(f"❌ Error: {str(e)}", fg='red'),
+            click.style(f"❌ Error: {str(e)}", fg="red"),
             err=True,
         )
         sys.exit(1)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     cli()
